@@ -1,0 +1,91 @@
+﻿<Page x:Class="PortProgramm.PageFolder.AdminPageFolder.EmployeeAddPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PortProgramm.PageFolder.AdminPageFolder"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:uc="clr-namespace:PortProgramm.UserControls"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="800"
+      Title="AddPage">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+
+    <Grid>
+        <Grid VerticalAlignment="Center" Margin="0">
+            <!--Background Layers-->
+
+            <!--Main Layer-->
+            <Border CornerRadius="7" Background="#ffffff" >
+                <Border.Effect>
+                    <DropShadowEffect Direction="-130" BlurRadius="30" ShadowDepth="5" Opacity="0.1"/>
+                </Border.Effect>
+
+                <Grid Margin="20 0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Form Title-->
+                    <StackPanel Orientation="Horizontal" Margin="20 20 0 0">
+                        <Border CornerRadius="50" BorderThickness="1.5" BorderBrush="#EFEFEF">
+                            <Ellipse Width="40" Height="40">
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="/ResourceFolder/ImageFolder/q4.png"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                        </Border>
+
+                        <TextBlock Text="Добавление работника" Foreground="#374655" FontSize="18" Margin="15 0 0 0" VerticalAlignment="Center"/>
+                    </StackPanel>
+
+                    <!--Form Percentage-->
+
+
+                    <Separator Grid.Row="1" Grid.ColumnSpan="2" Height="0.7" Margin="-20 20 -20 20" Background="#E1E6EB"/>
+
+                    <!--Inputs-->
+                    <ComboBox Grid.Column="1" Grid.Row="3" Style="{StaticResource MaterialDesignOutlinedComboBox}" Margin="20 10 20 10" materialDesign:HintAssist.Hint="Выберите должность" x:Name="PostCb" 
+                              ItemsSource="{Binding Post}" DisplayMemberPath="PostName"
+                  SelectedValuePath="PostId"
+                  SelectedValue="{Binding Path=PostId}"/>
+                    <uc:MyTextBox Grid.Column="0" Grid.Row="3" Caption="Телефон сотрудника" Hint="Введите телефон сотрудника" x:Name="PhoneTb"/>
+                    <uc:MyTextBox Grid.Column="0" Grid.Row="4" Caption="Паспорт сотрудника" Hint="Введите паспорт сотрудника" x:Name="PassportTb"/>
+                    <uc:MyTextBox Grid.Column="0" Grid.Row="2" Caption="ФИО сотрудника" Hint="Введите ФИО сотрудника" x:Name="FIOTb"/>
+                    <uc:MyTextBox Grid.Column="1" Grid.Row="2" Caption="Адрес сотрудника" Hint="Введите адрес сотрудника" x:Name="AdressTb"/>
+                    
+                    <!--Form Bottom Background-->
+                    <Border Grid.Row="6" Grid.ColumnSpan="2" Height="80" Background="#f6f6f6" CornerRadius="0 0 10 10" Margin="-20 40 -20 0"/>
+
+                    <!--Main Button-->
+                    <Button Grid.Row="6" Content="Сохранить" HorizontalAlignment="Right" Margin="0,61,305,21" Style="{StaticResource mainButton}" Width="150" Grid.ColumnSpan="2" Click="Button_Click">
+                        <Button.Effect>
+                            <DropShadowEffect Direction="-120" BlurRadius="10" Opacity="0.3" ShadowDepth="5" Color="#4880FF"/>
+                        </Button.Effect>
+                    </Button>
+
+                    <!--Secondary Button-->
+
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</Page>
