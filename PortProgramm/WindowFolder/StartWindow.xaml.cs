@@ -29,9 +29,11 @@ namespace PortProgramm.WindowFolder
     /// </summary>
     public partial class StartWindow : Window
     {
+        private Grid overlayGrid;
         public StartWindow()
         {
             InitializeComponent();
+            InitializeOverlay();
             MainFrame.Navigate(new AuthorizationPage());
         }
 
@@ -85,7 +87,7 @@ namespace PortProgramm.WindowFolder
             AuthBTN.BeginAnimation(TextBlock.OpacityProperty, fadeInAnimation);
         }
 
-        private void AuthBTN_Click1(object sender, RoutedEventArgs e)
+        public void AuthBTN_Click1(object sender, RoutedEventArgs e)
         {
             StartAnimation2();
 
@@ -176,6 +178,62 @@ namespace PortProgramm.WindowFolder
             AuthBTN.BeginAnimation(TextBlock.OpacityProperty, fadeInAnimation);
         }
 
-        
+        private void InitializeOverlay()
+        {
+            // Создаем новый Grid (сетку), который будет слоем затемнения
+            
+            overlayGrid = new Grid
+            {
+                Background = new SolidColorBrush(Colors.Black),
+                Opacity = 0.0, // Прозрачность слоя (от 0.0 до 1.0)
+                Visibility = Visibility.Collapsed, // Начально делаем слой невидимым
+                IsHitTestVisible = true // Блокируем взаимодействие с элементами под слоем
+            };
+
+            // Добавляем слой затемнения в главную сетку окна
+            LayoutRoot.Children.Add(overlayGrid);
+
+            // Подписываемся на событие изменения размеров окна
+            SizeChanged += (sender, e) => UpdateOverlaySize();
+        }
+
+        private void UpdateOverlaySize()
+        {
+            // Обновляем размеры слоя затемнения при изменении размеров окна
+            overlayGrid.Width = ActualWidth;
+            overlayGrid.Height = ActualHeight;
+        }
+
+        public void ShowOverlay()
+        {
+            // Показываем слой затемнения
+            overlayGrid.Visibility = Visibility.Visible;
+            DoubleAnimation fadeInAnimation = new DoubleAnimation
+            {
+                From = 0.0,
+                To = 0.5,
+                Duration = TimeSpan.FromSeconds(1),
+                AutoReverse = false
+            };
+            overlayGrid.BeginAnimation(Grid.OpacityProperty, fadeInAnimation);
+        }
+
+        public void HideOverlay()
+        {
+            // Скрываем слой затемнения
+            DoubleAnimation fadeInAnimation = new DoubleAnimation
+            {
+                From = 0.5,
+                To = 0.0,
+                Duration = TimeSpan.FromSeconds(1),
+                AutoReverse = false
+            };
+            fadeInAnimation.Completed += (S, _) =>
+            {
+                overlayGrid.Visibility = Visibility.Collapsed;
+            };
+            overlayGrid.BeginAnimation(Grid.OpacityProperty, fadeInAnimation);
+            
+        }
     }
 }

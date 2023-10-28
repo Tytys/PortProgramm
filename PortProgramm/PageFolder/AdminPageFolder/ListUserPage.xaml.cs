@@ -2,11 +2,14 @@
 using PortProgramm.DataFolder;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -27,6 +30,7 @@ namespace PortProgramm.PageFolder.AdminPageFolder
             InitializeComponent();
             DgUser.ItemsSource = DBEntities.GetContext().User
                 .ToList().OrderBy(u => u.UserName);
+            
         }
 
         private void SearchTB_TextChanged(object sender, TextChangedEventArgs e)
@@ -86,5 +90,24 @@ namespace PortProgramm.PageFolder.AdminPageFolder
         {
             NavigationService.Navigate(new AddUserPage());
         }
+
+        private void DataGridCell_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (sender is DataGridCell cell && cell.Column is DataGridTemplateColumn)
+            {
+                // Разрешить редактирование ячейки
+                cell.IsEnabled = true;
+
+                // Переключить фокус на ячейку
+                cell.Focus();
+            }
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        
     }
 }

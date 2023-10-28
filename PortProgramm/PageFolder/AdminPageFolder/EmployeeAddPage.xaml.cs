@@ -44,6 +44,7 @@ namespace PortProgramm.PageFolder.AdminPageFolder
                 });
                 DBEntities.GetContext().SaveChanges();
                 MBClass.InfoMB("Сотрудник успешно добавлен");
+                NavigationService.Navigate(new EmployeeListPage());
             }
             catch (Exception ex)
             {

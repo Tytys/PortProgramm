@@ -8,11 +8,11 @@
       d:DesignHeight="500" d:DesignWidth="480"
       Title="AuthorizationPage" Background="White">
 
-    <Grid>
+    <Grid x:Name="LayoutRoot">
         <StackPanel VerticalAlignment="Center" x:Name="MainBorder">
             <TextBlock Text="Регистрация пользователя" Foreground="#3AB19B" Style="{StaticResource TitleText}" FontSize="28"/>
             <StackPanel Orientation="Horizontal" Margin="0 20" HorizontalAlignment="Center">
-                <Button Style="{StaticResource buttonCircle}">
+                <Button Style="{StaticResource buttonCircle}" Click="Button_Click_1">
                     <Image Source="/ResourceFolder/ImageFolder/google.png" Width="20" Height="20" />
                 </Button>
                 <Button Style="{StaticResource buttonCircle}">

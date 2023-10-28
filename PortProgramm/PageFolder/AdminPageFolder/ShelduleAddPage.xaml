@@ -8,7 +8,7 @@
       xmlns:uc="clr-namespace:PortProgramm.UserControls"
       mc:Ignorable="d" 
       d:DesignHeight="600" d:DesignWidth="800"
-      Title="AddPage">
+      Title="AddPage" >
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -69,12 +69,13 @@
                   SelectedValue="{Binding Path=ShipId}"/>
                     <uc:MyTextBox Grid.Column="0" Grid.Row="3" Caption="Порт отправления" Hint="Введите порт отправления" x:Name="TudaPost"/>
                     <uc:MyTextBox Grid.Column="0" Grid.Row="2" Caption="Порт прибытия" Hint="Введите порт прибытия" x:Name="SudaPort"/>
-                    <uc:MyTextBox Grid.Column="1" Grid.Row="2" Caption="Время отправления" Hint="Введите время отправления" x:Name="TudaTime"/>
-                    <uc:MyTextBox Grid.Column="1" Grid.Row="3" Caption="Время прибытия" Hint="Введите время прибытия" x:Name="SudaTime"/>
+                    <!--<uc:MyTextBox Grid.Column="1" Grid.Row="2" Caption="Время отправления" Hint="Введите время отправления" x:Name="TudaTime"/>-->
+                    <uc:MyDatePiker Grid.Column="1" Grid.Row="2" Caption="Время отправления" Hint="Выберите время прибытия" x:Name="TudaTime"/>
+                    <uc:MyDatePiker Grid.Column="1" Grid.Row="3" Caption="Время прибытия" Hint="Введите время прибытия" x:Name="SudaTime"/>
                     <ComboBox Grid.Column="1" Grid.Row="4" Style="{StaticResource MaterialDesignOutlinedComboBox}" Margin="20 10 20 10" materialDesign:HintAssist.Hint="Выберите cотрудника" x:Name="EmployeeCb" 
                               ItemsSource="{Binding Employee}" DisplayMemberPath="EmployeeFIO"
                   SelectedValuePath="EmployeeId"
-                  SelectedValue="{Binding Path=EmployeeId}"/>
+                  SelectedValue="{Binding Path=EmployeeId}" Background="White"/>
                     <!--Form Bottom Background-->
                     <Border Grid.Row="6" Grid.ColumnSpan="2" Height="80" Background="#f6f6f6" CornerRadius="0 0 10 10" Margin="-20 40 -20 0"/>
 

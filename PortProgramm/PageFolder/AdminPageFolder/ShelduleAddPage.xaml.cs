@@ -44,11 +44,12 @@ namespace PortProgramm.PageFolder.AdminPageFolder
                     DeparturePort = SudaPort.textBox.Text,
                     ArrivalPort = TudaPost.textBox.Text,
                     DepartureTime = DateTime.Parse(SudaTime.textBox.Text),
-                    ArrivalTime = DateTime.Parse(TudaTime.textBox.Text),
+                    ArrivalTime = DateTime.Parse(TudaTime.datePiker.Text),
                     EmployeeId = index2
                 });
                 DBEntities.GetContext().SaveChanges();
                 MBClass.InfoMB("Расписание успешно добавлено");
+                NavigationService.Navigate(new ShelduleListPage());
             }
             catch (Exception ex)
             {

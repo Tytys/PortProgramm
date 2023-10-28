@@ -43,6 +43,7 @@ namespace PortProgramm.PageFolder.AdminPageFolder
                 });
                 DBEntities.GetContext().SaveChanges();
                 MBClass.InfoMB("Пользователь успешно добавлен");
+                NavigationService.Navigate(new ListUserPage());
             }
             catch (Exception ex)
             {

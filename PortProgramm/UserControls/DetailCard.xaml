@@ -39,7 +39,7 @@
                 <TextBlock Text="{Binding ElementName=detailCard,Path=Title}" FontSize="14"/>
             </StackPanel>
 
-            <Border Grid.Column="2" CornerRadius="50" Width="25" Height="25" Background="#4880FF">
+            <Border Grid.Column="2" CornerRadius="50" Width="25" Height="25" Background="#4880FF" HorizontalAlignment="Right">
                 <TextBlock Text="{Binding ElementName=detailCard,Path=Number}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="10"/>
             </Border>
 

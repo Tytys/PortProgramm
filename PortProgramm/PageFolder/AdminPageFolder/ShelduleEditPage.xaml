@@ -69,8 +69,8 @@
                   SelectedValue="{Binding Path=ShipId}"/>
                     <uc:MyTextBox Grid.Column="0" Grid.Row="3" Caption="Порт отправления" Hint="{Binding DeparturePort}" x:Name="TudaPost"/>
                     <uc:MyTextBox Grid.Column="0" Grid.Row="2" Caption="Порт прибытия" Hint="{Binding ArrivalPort}" x:Name="SudaPort"/>
-                    <uc:MyTextBox Grid.Column="1" Grid.Row="2" Caption="Время отправления" Hint="{Binding DepartureTime}" x:Name="TudaTime"/>
-                    <uc:MyTextBox Grid.Column="1" Grid.Row="3" Caption="Время прибытия" Hint="{Binding ArrivalTime}" x:Name="SudaTime"/>
+                    <uc:MyDatePiker Grid.Column="1" Grid.Row="2" Caption="Время отправления" Hint="{Binding DepartureTime}" x:Name="TudaTime"/>
+                    <uc:MyDatePiker Grid.Column="1" Grid.Row="3" Caption="Время прибытия" Hint="{Binding ArrivalTime}" x:Name="SudaTime"/>
                     <ComboBox Grid.Column="1" Grid.Row="4" Style="{StaticResource MaterialDesignOutlinedComboBox}" Margin="20 10 20 10" materialDesign:HintAssist.Hint="Выберите cотрудника" x:Name="EmployeeCb" 
                               ItemsSource="{Binding Employee}" DisplayMemberPath="EmployeeFIO"
                   SelectedValuePath="EmployeeId"

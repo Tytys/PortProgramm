@@ -62,16 +62,16 @@
 
                 <DataGridTextColumn Header="Отправление"
                                     Binding="{Binding DeparturePort}"
-                                    Width="*"/>
+                                    Width="140"/>
                 <DataGridTextColumn Header="Прибывание"
                                     Binding="{Binding ArrivalPort}"
-                                    Width="*"/>
+                                    Width="140"/>
                 <DataGridTextColumn Header="Время отправления"
                                     Binding="{Binding DepartureTime}"
-                                    Width="*"/>
+                                    Width="140"/>
                 <DataGridTextColumn Header="Время прибывания"
                                     Binding="{Binding ArrivalTime}"
-                                    Width="*"/>
+                                    Width="140"/>
                 <DataGridTextColumn Header="Сотрудник"
                                     Binding="{Binding Employee.EmployeeFIO}"
                                     Width="*"/>

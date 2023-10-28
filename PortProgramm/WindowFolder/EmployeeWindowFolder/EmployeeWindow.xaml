@@ -26,26 +26,22 @@
             </Grid.ColumnDefinitions>
 
             <!--App Title-->
-            <TextBlock Text="Порт" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="55 0 0 2" FontSize="16" FontWeight="SemiBold" Foreground="#4880FF"/>
-            <Icon:PackIconMaterial Kind="Account" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="30 4 0 0" Width="14" Height="14" Foreground="#4880FF"/>
+            <TextBlock Text="Порт" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="56,14,0,0" FontSize="16" FontWeight="SemiBold" Foreground="#4880FF" Height="21"/>
+            <Icon:PackIconMaterial Kind="ShipWheel" Margin="25,14,0,0" Width="22" Height="22" Foreground="#4880FF" RenderTransformOrigin="0.5,0.511"/>
 
             <!--Top Menu-->
-            <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right" Margin="0 0 15 0">
-
-
-
-                <Button Style="{StaticResource menuButton}" Click="Button_Click_1">
-                    <Icon:PackIconMaterial Kind="Wrap" Width="14" Height="14"/>
+            <StackPanel Orientation="Horizontal" Grid.Column="3" HorizontalAlignment="Left" Margin="293,0,0,0">
+                <Button Style="{StaticResource menuButton}" Click="Button_Click_1" Height="19" Margin="10 0 10 0">
+                    <Icon:PackIconMaterial Kind="Wrap" Width="14" Height="12" HorizontalAlignment="Center"/>
                 </Button>
-
-                <Button Style="{StaticResource menuButton}" Background="#efefef" Click="Button_Click">
+                <Button Style="{StaticResource menuButton}" Background="#efefef" Click="Button_Click" Height="17" Margin="10 0 10 0">
                     <Icon:PackIconMaterial Kind="Close" Width="14" Height="13" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </Button>
             </StackPanel>
 
             <!--Right Section-->
             <Border Grid.Row="1" Grid.Column="1" Background="#4880FF" CornerRadius="0 0 5 0" >
-                <StackPanel Margin="60 0 10 0">
+                <StackPanel HorizontalAlignment="Center">
 
                     <!--Main Image-->
                     <Border CornerRadius="100" Width="85" Height="85" Background="#ffffff" Margin="15 40 20 20">
@@ -62,8 +58,8 @@
                                Text="Управляйте списком кораблей и расписанием"/>
 
                     <!--Cards-->
-                    <uc:DetailCard Title="Корабли"  Number="1" Image="C:\Users\ififi\source\repos\PortProgramm\PortProgramm\ResourceFolder\ImageFolder\q2.png" MouseLeftButtonDown="DetailCard_MouseLeftButtonDown"/>
-                    <uc:DetailCard Title="Расписание"  Number="2" Image="C:\Users\ififi\source\repos\PortProgramm\PortProgramm\ResourceFolder\ImageFolder\q3.png" MouseLeftButtonDown="DetailCard_MouseLeftButtonDown_1"/>
+                    <uc:DetailCard Title="Корабли"  Width="350" Number="1" Image="C:\Users\ififi\source\repos\PortProgramm\PortProgramm\ResourceFolder\ImageFolder\q2.png" MouseLeftButtonDown="DetailCard_MouseLeftButtonDown"/>
+                    <uc:DetailCard Title="Расписание" Width="350" Number="2" Image="C:\Users\ififi\source\repos\PortProgramm\PortProgramm\ResourceFolder\ImageFolder\q3.png" MouseLeftButtonDown="DetailCard_MouseLeftButtonDown_1"/>
                     
                     <!--<uc:DetailCard Title="Notifications" Time="2 min" Number="6" Image="/Images/p6.jpg"/>-->
 

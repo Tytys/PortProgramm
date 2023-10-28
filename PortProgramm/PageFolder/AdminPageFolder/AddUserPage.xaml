@@ -64,10 +64,10 @@
                     <!--Inputs-->
                     <uc:MyTextBox Grid.Column="0" Grid.Row="2" Caption="Имя пользователя" Hint="Введите логин" x:Name="LoginTb"/>
                     <uc:MyTextBox Grid.Column="0" Grid.Row="3" Caption="Пароль пользователя" Hint="Введите пароль" x:Name="PasswordTb"/>
-                    <ComboBox Grid.Column="0" Grid.Row="4" Style="{StaticResource MaterialDesignOutlinedComboBox}"  Margin="20 10 20 10" materialDesign:HintAssist.Hint="Роль" x:Name="RoleCb" 
-                              ItemsSource="{Binding Role}" DisplayMemberPath="RoleName"
-                  SelectedValuePath="Id"
-                  SelectedValue="{Binding Path=Id}">
+                    <ComboBox Grid.Column="0" Grid.Row="4" Style="{StaticResource MaterialDesignOutlinedComboBox}"  Margin="20 10 20 10" materialDesign:HintAssist.Hint="Роль" x:Name="RoleCb"                            
+                        ItemsSource="{Binding Role}" DisplayMemberPath="RoleName"
+                        SelectedValuePath="Id"
+                        SelectedValue="{Binding Path=Id}">
                         
                     </ComboBox>
 

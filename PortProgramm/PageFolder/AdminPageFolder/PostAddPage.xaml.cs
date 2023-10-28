@@ -37,6 +37,7 @@ namespace PortProgramm.PageFolder.AdminPageFolder
                 });
                 DBEntities.GetContext().SaveChanges();
                 MBClass.InfoMB("Должность успешно добавлена");
+                NavigationService.Navigate(new EmployeeListPage());
             }
             catch (Exception ex)
             {

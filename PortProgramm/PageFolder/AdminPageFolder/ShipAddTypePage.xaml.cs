@@ -38,6 +38,7 @@ namespace PortProgramm.PageFolder.AdminPageFolder
                 });
                 DBEntities.GetContext().SaveChanges();
                 MBClass.InfoMB("Тип корабля успешно добавлен");
+                NavigationService.Navigate(new ShelduleListPage());
             }
             catch (Exception ex)
             {

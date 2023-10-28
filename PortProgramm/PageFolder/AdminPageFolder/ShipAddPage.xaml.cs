@@ -44,6 +44,7 @@ namespace PortProgramm.PageFolder.AdminPageFolder
                 });
                 DBEntities.GetContext().SaveChanges();
                 MBClass.InfoMB("Корабль успешно добавлен");
+                NavigationService.Navigate(new ShelduleListPage());
             }
             catch (Exception ex)
             {

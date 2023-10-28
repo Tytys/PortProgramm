@@ -8,7 +8,7 @@
       d:DesignHeight="500" d:DesignWidth="480"
       Title="AuthorizationPage" Background="White">
 
-    <Grid>
+    <Grid x:Name="LayoutRoot">
         <StackPanel VerticalAlignment="Center" x:Name="MainBorder">
             <TextBlock Text="Войти в приложение" Foreground="#3AB19B" Style="{StaticResource TitleText}" />
             <StackPanel Orientation="Horizontal" Margin="0 20" HorizontalAlignment="Center">
