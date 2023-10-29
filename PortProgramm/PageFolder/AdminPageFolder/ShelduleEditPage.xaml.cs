@@ -48,8 +48,8 @@ namespace PortProgramm.PageFolder.AdminPageFolder
                 scheldule.ShipId = index;
                 scheldule.DeparturePort = SudaPort.textBox.Text;
                 scheldule.ArrivalPort = TudaPost.textBox.Text;
-                scheldule.DepartureTime = DateTime.Parse(SudaTime.textBox.Text);
-                scheldule.ArrivalTime = DateTime.Parse(TudaTime.textBox.Text);
+                scheldule.DepartureTime = DateTime.Parse(SudaTime.datePiker.Text);
+                scheldule.ArrivalTime = DateTime.Parse(TudaTime.datePiker.Text);
                 scheldule.EmployeeId = index2;
                 DBEntities.GetContext().SaveChanges();
                 MBClass.InfoMB("Данные успешно отредактированы");
@@ -65,8 +65,8 @@ namespace PortProgramm.PageFolder.AdminPageFolder
         {
             SudaPort.textBox.Text = SudaPort.Hint;
             TudaPost.textBox.Text = TudaPost.Hint;
-            SudaTime.textBox.Text = SudaTime.Hint;
-            TudaTime.textBox.Text = TudaTime.Hint;
+            SudaTime.datePiker.Text = SudaTime.Hint;
+            TudaTime.datePiker.Text = TudaTime.Hint;
         }
     }
 }

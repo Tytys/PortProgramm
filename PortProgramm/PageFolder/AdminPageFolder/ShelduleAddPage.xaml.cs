@@ -43,7 +43,7 @@ namespace PortProgramm.PageFolder.AdminPageFolder
                     ShipId = index,
                     DeparturePort = SudaPort.textBox.Text,
                     ArrivalPort = TudaPost.textBox.Text,
-                    DepartureTime = DateTime.Parse(SudaTime.textBox.Text),
+                    DepartureTime = DateTime.Parse(SudaTime.datePiker.Text),
                     ArrivalTime = DateTime.Parse(TudaTime.datePiker.Text),
                     EmployeeId = index2
                 });

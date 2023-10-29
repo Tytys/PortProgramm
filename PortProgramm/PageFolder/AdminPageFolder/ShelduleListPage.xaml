@@ -38,11 +38,12 @@
                  Grid.Row="1" Grid.Column="2"
                  Width="Auto"
                  TextChanged="SearchTB_TextChanged" Margin="10" />
-        <DataGrid x:Name="DgUser" AutoGenerateColumns="False" 
+        <ScrollViewer  Grid.Column="1" Grid.Row="2" 
+                  Grid.ColumnSpan="3">
+            <DataGrid x:Name="DgUser" AutoGenerateColumns="False" 
                   IsReadOnly="True"
-                  Grid.Column="1" Grid.Row="2" 
-                  Grid.ColumnSpan="3"
-                  ItemsSource="{Binding Schedule}" Background="White">
+                  Width="1000"
+                  ItemsSource="{Binding Schedule}" >
             <DataGrid.ContextMenu>
                 <ContextMenu Background="#4880FF" Foreground="White">
                     <MenuItem x:Name="DeleteMI"
@@ -60,22 +61,23 @@
                                     Binding="{Binding Ship.ShipName}"
                                     Width="*" />
 
-                <DataGridTextColumn Header="Отправление"
+                <DataGridTextColumn Header="Порт отправления"
                                     Binding="{Binding DeparturePort}"
-                                    Width="140"/>
-                <DataGridTextColumn Header="Прибывание"
+                                    Width="*"/>
+                <DataGridTextColumn Header="Порт прибывания"
                                     Binding="{Binding ArrivalPort}"
-                                    Width="140"/>
+                                    Width="*"/>
                 <DataGridTextColumn Header="Время отправления"
                                     Binding="{Binding DepartureTime}"
-                                    Width="140"/>
+                                    Width="*"/>
                 <DataGridTextColumn Header="Время прибывания"
                                     Binding="{Binding ArrivalTime}"
-                                    Width="140"/>
+                                    Width="*"/>
                 <DataGridTextColumn Header="Сотрудник"
                                     Binding="{Binding Employee.EmployeeFIO}"
                                     Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
+        </ScrollViewer>
     </Grid>
 </Page>
