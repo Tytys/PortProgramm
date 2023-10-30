@@ -7,14 +7,14 @@
         xmlns:uc="clr-namespace:PortProgramm.UserControls"
         xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
         Width="1150" Height="790" MinWidth="1150" MinHeight="790" WindowStyle="None"
-        WindowStartupLocation="CenterScreen" AllowsTransparency="True" Background="Transparent">
+        WindowStartupLocation="CenterScreen" AllowsTransparency="True" Background="Transparent" MouseDown="Border_MouseDown">
 
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="0" ResizeBorderThickness="5"/>
     </WindowChrome.WindowChrome>
 
-    <Border CornerRadius="5" Background="#ffffff" MouseDown="Border_MouseDown" MouseLeftButtonDown="Border_MouseLeftButtonDown">
-        <Grid>
+    <Border CornerRadius="5" Background="#ffffff"  MouseLeftButtonDown="Border_MouseLeftButtonDown" x:Name="LayoutRoot">
+        <Grid  >
             <Grid.RowDefinitions>
                 <RowDefinition Height="45"/>
                 <RowDefinition Height="*"/>

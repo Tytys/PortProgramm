@@ -10,6 +10,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
@@ -20,6 +21,7 @@ namespace PortProgramm.WindowFolder.AdminWindowFolder
     /// </summary>
     public partial class AdminWindow : Window
     {
+ 
         public AdminWindow()
         {
             InitializeComponent();
@@ -44,12 +46,12 @@ namespace PortProgramm.WindowFolder.AdminWindowFolder
             }
         }
 
-        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
+        public void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (e.ChangedButton == MouseButton.Left)
-            {
-                this.DragMove();
-            }
+            //if (e.ChangedButton == MouseButton.Left)
+            //{
+            //    this.DragMove();
+            //}
         }
 
         private void DetailCard_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -72,6 +74,7 @@ namespace PortProgramm.WindowFolder.AdminWindowFolder
             MainFrame.Navigate(new EmployeeListPage());
         }
 
-       
+        
+
     }
 }

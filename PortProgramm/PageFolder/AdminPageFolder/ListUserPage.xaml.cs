@@ -1,5 +1,7 @@
 ﻿using PortProgramm.ClassFolder;
 using PortProgramm.DataFolder;
+using PortProgramm.WindowFolder;
+using PortProgramm.WindowFolder.AdminWindowFolder;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -14,6 +16,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -25,6 +28,7 @@ namespace PortProgramm.PageFolder.AdminPageFolder
     /// </summary>
     public partial class ListUserPage : Page
     {
+        private Grid overlayGrid;
         public ListUserPage()
         {
             InitializeComponent();
@@ -105,9 +109,20 @@ namespace PortProgramm.PageFolder.AdminPageFolder
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
+        private void DgUser_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            new AdminQuestionWindow().ShowDialog();
+        }
+
+        public void ShowPassword()
+        {
+            PasswordDG.Visibility= Visibility.Visible;
+        }
+
+        
         
     }
 }

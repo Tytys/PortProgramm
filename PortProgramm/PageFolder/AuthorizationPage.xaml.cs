@@ -107,6 +107,7 @@ namespace PortProgramm.PageFolder
                                 if (windows.Title == "StartWindow")
                                 {
                                     new AdminWindow().Show();
+                                    VariableClass.AdminLogin = txtEmail.Text;
                                     windows.Close();
                                 }
                             }

@@ -221,6 +221,7 @@
     </Compile>
     <Compile Include="ClassFolder\GenerateCapchaClass.cs" />
     <Compile Include="ClassFolder\MBClass.cs" />
+    <Compile Include="ClassFolder\VariableClass.cs" />
     <Compile Include="DataFolder\DBModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -319,6 +320,9 @@
     </Compile>
     <Compile Include="UserControls\MyTextBox.xaml.cs">
       <DependentUpon>MyTextBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowFolder\AdminQuestionWindow.xaml.cs">
+      <DependentUpon>AdminQuestionWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="WindowFolder\AdminWindowFolder\AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>
@@ -457,6 +461,10 @@
     <Page Include="UserControls\MyTextBox.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WindowFolder\AdminQuestionWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="WindowFolder\AdminWindowFolder\AdminWindow.xaml">
       <SubType>Designer</SubType>
