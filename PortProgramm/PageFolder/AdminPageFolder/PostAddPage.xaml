@@ -46,7 +46,7 @@
                         <Border CornerRadius="50" BorderThickness="1.5" BorderBrush="#EFEFEF">
                             <Ellipse Width="40" Height="40">
                                 <Ellipse.Fill>
-                                    <ImageBrush ImageSource="C:\Users\ififi\source\repos\PortProgramm\PortProgramm\ResourceFolder\ImageFolder\q5.png"/>
+                                    <ImageBrush ImageSource="\ResourceFolder\ImageFolder\q5.png"/>
                                 </Ellipse.Fill>
                             </Ellipse>
                         </Border>

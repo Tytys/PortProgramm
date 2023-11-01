@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:PortProgramm.PageFolder.AdminPageFolder"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      MinHeight="600" MinWidth="800" MaxWidth="800"
       Title="Список кораблей">
     <Page.Resources>
         <ResourceDictionary>
@@ -14,6 +14,10 @@
                 <materialDesign:BundledTheme BaseTheme="Light" />
                 <materialDesign:BundledTheme BaseTheme="Light" PrimaryColor="DeepPurple"/>
             </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="ScrollBar">
+                
+            </Style>
+            
         </ResourceDictionary>
     </Page.Resources>
 
@@ -39,11 +43,11 @@
                  Width="Auto"
                  TextChanged="SearchTB_TextChanged" Margin="10" />
         <ScrollViewer  Grid.Column="1" Grid.Row="2" 
-                  Grid.ColumnSpan="3">
+                  Grid.ColumnSpan="3" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Hidden">
             <DataGrid x:Name="DgUser" AutoGenerateColumns="False" 
                   IsReadOnly="True"
                   Width="1000"
-                  ItemsSource="{Binding Schedule}" >
+                  ItemsSource="{Binding Schedule}" Background="White">
             <DataGrid.ContextMenu>
                 <ContextMenu Background="#4880FF" Foreground="White">
                     <MenuItem x:Name="DeleteMI"

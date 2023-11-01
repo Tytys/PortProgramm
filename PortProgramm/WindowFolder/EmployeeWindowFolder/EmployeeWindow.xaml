@@ -47,7 +47,7 @@
                     <Border CornerRadius="100" Width="85" Height="85" Background="#ffffff" Margin="15 40 20 20">
                         <Ellipse Width="80" Height="80">
                             <Ellipse.Fill>
-                                <ImageBrush ImageSource="C:\Users\ififi\source\repos\PortProgramm\PortProgramm\ResourceFolder\ImageFolder\q4.png" Stretch="UniformToFill"/>
+                                <ImageBrush ImageSource="\ResourceFolder\ImageFolder\q4.png" Stretch="UniformToFill"/>
                             </Ellipse.Fill>
                         </Ellipse>
                     </Border>
@@ -58,8 +58,8 @@
                                Text="Управляйте списком кораблей и расписанием"/>
 
                     <!--Cards-->
-                    <uc:DetailCard Title="Корабли"  Width="350" Number="1" Image="C:\Users\ififi\source\repos\PortProgramm\PortProgramm\ResourceFolder\ImageFolder\q2.png" MouseLeftButtonDown="DetailCard_MouseLeftButtonDown"/>
-                    <uc:DetailCard Title="Расписание" Width="350" Number="2" Image="C:\Users\ififi\source\repos\PortProgramm\PortProgramm\ResourceFolder\ImageFolder\q3.png" MouseLeftButtonDown="DetailCard_MouseLeftButtonDown_1"/>
+                    <uc:DetailCard Title="Корабли"  Width="350" Number="1" Image="\ResourceFolder\ImageFolder\q2.png" MouseLeftButtonDown="DetailCard_MouseLeftButtonDown"/>
+                    <uc:DetailCard Title="Расписание" Width="350" Number="2" Image="\ResourceFolder\ImageFolder\q3.png" MouseLeftButtonDown="DetailCard_MouseLeftButtonDown_1"/>
                     
                     <!--<uc:DetailCard Title="Notifications" Time="2 min" Number="6" Image="/Images/p6.jpg"/>-->
 
