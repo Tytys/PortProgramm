@@ -63,6 +63,13 @@ namespace PortProgramm.PageFolder.AdminPageFolder
                     $"сотрудника с ФИО " +
                     $"{employee.EmployeeFIO}?"))
                 {
+                    foreach (Schedule item in DBEntities.GetContext().Schedule.ToList())
+                    {
+                        if (item.EmployeeId == employee.EmployeeId)
+                        {
+                            item.EmployeeId = null;
+                        }
+                    }
                     DBEntities.GetContext().Employee
                         .Remove(DgUser.SelectedItem as Employee);
                     DBEntities.GetContext().SaveChanges();

@@ -39,7 +39,9 @@ namespace PortProgramm.PageFolder.AdminPageFolder
                 {
                     UserName = LoginTb.textBox.Text,
                     UserPassword = PasswordTb.textBox.Text,
-                    RoleId = index,                 
+                    RoleId = index,
+                    UserEmail = EmailTb.textBox.Text,
+                    UserFIO = FIOTb.textBox.Text
                 });
                 DBEntities.GetContext().SaveChanges();
                 MBClass.InfoMB("Пользователь успешно добавлен");

@@ -36,16 +36,14 @@ namespace PortProgramm.PageFolder.AdminPageFolder
         {
             try
             {
-                int index = ShipCb.SelectedIndex + 1;
-                int index2 = EmployeeCb.SelectedIndex + 1;
                 DBEntities.GetContext().Schedule.Add(new Schedule()
                 {
-                    ShipId = index,
+                    ShipId = int.Parse(ShipCb.SelectedValue.ToString()),
                     DeparturePort = SudaPort.textBox.Text,
                     ArrivalPort = TudaPost.textBox.Text,
                     DepartureTime = DateTime.Parse(SudaTime.datePiker.Text),
                     ArrivalTime = DateTime.Parse(TudaTime.datePiker.Text),
-                    EmployeeId = index2
+                    EmployeeId = int.Parse(EmployeeCb.SelectedValue.ToString())
                 });
                 DBEntities.GetContext().SaveChanges();
                 MBClass.InfoMB("Расписание успешно добавлено");

@@ -16,7 +16,7 @@
     <Border CornerRadius="5" Background="#ffffff" MouseDown="Border_MouseDown" MouseLeftButtonDown="Border_MouseLeftButtonDown">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="45"/>
+                <RowDefinition Height="83"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
@@ -26,8 +26,9 @@
             </Grid.ColumnDefinitions>
 
             <!--App Title-->
-            <TextBlock Text="Порт" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="56,14,0,0" FontSize="16" FontWeight="SemiBold" Foreground="#4880FF" Height="21"/>
-            <Icon:PackIconMaterial Kind="ShipWheel" Margin="25,14,0,0" Width="22" Height="22" Foreground="#4880FF" RenderTransformOrigin="0.5,0.511"/>
+            <TextBlock Text="{Binding ElementName=MainFrame,
+                        Path=Content.Title}" HorizontalAlignment="Center" VerticalAlignment="Center"  FontSize="22" FontWeight="SemiBold" Foreground="#4880FF" x:Name="PageNameText"/>
+            <Icon:PackIconMaterial Kind="ShipWheel" Margin="25,0,0,0" Width="60" Height="60" Foreground="#4880FF" RenderTransformOrigin="0.5,0.511" VerticalAlignment="Center"/>
 
             <!--Top Menu-->
             <StackPanel Orientation="Horizontal" Grid.Column="3" HorizontalAlignment="Left" Margin="293,0,0,0">

@@ -44,7 +44,9 @@ namespace PortProgramm.PageFolder.AdminPageFolder
                     .FirstOrDefault(u => u.UserId == user.UserId);
                 user.UserName = LoginTb.textBox.Text;
                 user.UserPassword = PasswordTb.textBox.Text;
-                user.RoleId = index;              
+                user.RoleId = index;  
+                user.UserEmail = EmailTb.textBox.Text;
+                user.UserFIO = FIOTb.textBox.Text;
                 DBEntities.GetContext().SaveChanges();
                 MBClass.InfoMB("Данные успешно отредактированы");
                 NavigationService.Navigate(new ListUserPage());

@@ -35,12 +35,12 @@
             <PropertyRef Name="SheduleId" />
           </Key>
           <Property Name="SheduleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ShipId" Type="int" Nullable="false" />
+          <Property Name="ShipId" Type="int" />
           <Property Name="DeparturePort" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ArrivalPort" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="DepartureTime" Type="datetime" Nullable="false" />
           <Property Name="ArrivalTime" Type="datetime" Nullable="false" />
-          <Property Name="EmployeeId" Type="int" Nullable="false" />
+          <Property Name="EmployeeId" Type="int" />
         </EntityType>
         <EntityType Name="Ship">
           <Key>
@@ -77,6 +77,8 @@
           <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="UserPassword" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="UserFIO" Type="nvarchar(max)" />
+          <Property Name="UserEmail" Type="nvarchar" MaxLength="80" />
         </EntityType>
         <Association Name="FK_Employee_Post">
           <End Role="Post" Type="Self.Post" Multiplicity="1" />
@@ -91,7 +93,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Schedule_Employee">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
           <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Employee">
@@ -103,7 +105,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Schedule_Ship">
-          <End Role="Ship" Type="Self.Ship" Multiplicity="1" />
+          <End Role="Ship" Type="Self.Ship" Multiplicity="0..1" />
           <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Ship">
@@ -207,12 +209,12 @@
             <PropertyRef Name="SheduleId" />
           </Key>
           <Property Name="SheduleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ShipId" Type="Int32" Nullable="false" />
+          <Property Name="ShipId" Type="Int32" />
           <Property Name="DeparturePort" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ArrivalPort" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DepartureTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ArrivalTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+          <Property Name="EmployeeId" Type="Int32" />
           <NavigationProperty Name="Employee" Relationship="Self.FK_Schedule_Employee" FromRole="Schedule" ToRole="Employee" />
           <NavigationProperty Name="Ship" Relationship="Self.FK_Schedule_Ship" FromRole="Schedule" ToRole="Ship" />
         </EntityType>
@@ -254,6 +256,8 @@
           <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="UserPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="UserFIO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserEmail" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
         </EntityType>
         <Association Name="FK_Employee_Post">
@@ -269,7 +273,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Schedule_Employee">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
           <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Employee">
@@ -293,7 +297,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Schedule_Ship">
-          <End Role="Ship" Type="Self.Ship" Multiplicity="1" />
+          <End Role="Ship" Type="Self.Ship" Multiplicity="0..1" />
           <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Ship">
@@ -430,6 +434,8 @@
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
                 <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="UserFIO" ColumnName="UserFIO" />
+                <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

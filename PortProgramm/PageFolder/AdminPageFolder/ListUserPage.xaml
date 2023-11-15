@@ -67,6 +67,12 @@
                 <DataGridTextColumn Header="Роль"
                                     Binding="{Binding Role.RoleName}"
                                     Width="*"/>
+                <DataGridTextColumn Header="ФИО"
+                                    Binding="{Binding UserFIO}"
+                                    Width="*" />
+                <DataGridTextColumn Header="Почта"
+                                    Binding="{Binding UserEmail}"
+                                    Width="*" />
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

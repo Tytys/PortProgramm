@@ -16,8 +16,8 @@
     <Border CornerRadius="5" Background="#ffffff"  MouseLeftButtonDown="Border_MouseLeftButtonDown" x:Name="LayoutRoot">
         <Grid  >
             <Grid.RowDefinitions>
-                <RowDefinition Height="45"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="83"/>
+                <RowDefinition/>
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
@@ -26,11 +26,12 @@
             </Grid.ColumnDefinitions>
 
             <!--App Title-->
-            <TextBlock Text="Порт" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="56,14,0,0" FontSize="16" FontWeight="SemiBold" Foreground="#4880FF" Height="21"/>
-            <Icon:PackIconMaterial Kind="ShipWheel" Margin="25,14,0,0" Width="22" Height="22" Foreground="#4880FF" RenderTransformOrigin="0.5,0.511"/>
+            <TextBlock Text="{Binding ElementName=MainFrame,
+                        Path=Content.Title}" HorizontalAlignment="Center" VerticalAlignment="Center"  FontSize="22" FontWeight="SemiBold" Foreground="#4880FF" x:Name="PageNameText"/>
+            <Icon:PackIconMaterial Kind="ShipWheel" Margin="25,0,0,0" Width="60" Height="60" Foreground="#4880FF" RenderTransformOrigin="0.5,0.511" VerticalAlignment="Center"/>
 
             <!--Top Menu-->
-            <StackPanel Orientation="Horizontal" Grid.Column="3" HorizontalAlignment="Left" Margin="293,0,0,0">
+            <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Left" Margin="293,0,0,0" Width="72">
                 <Button Style="{StaticResource menuButton}" Click="Button_Click" Height="19" Margin="10 0 10 0">
                     <Icon:PackIconMaterial Kind="Wrap" Width="14" Height="12" HorizontalAlignment="Center"/>
                 </Button>
@@ -66,14 +67,14 @@
                                    Width="350"/>
                     <uc:DetailCard Title="Сотрудники" Time="1 min" Number="4" Image="\ResourceFolder\ImageFolder\q4.png" MouseLeftButtonDown="DetailCard_MouseLeftButtonDown_3" 
                                    Width="350"/>
-                    
+
                     <!--<uc:DetailCard Title="Notifications" Time="2 min" Number="6" Image="/Images/p6.jpg"/>-->
 
                 </StackPanel>
             </Border>
 
             <!--Left Section-->
-            <Frame Grid.Row="1" Margin="10" x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
+            <Frame Grid.Row="1" Margin="10,10,10,10" x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
 
         </Grid>
     </Border>

@@ -56,6 +56,13 @@ namespace PortProgramm.PageFolder.AdminPageFolder
                     $"корабль с именем " +
                     $"{user.ShipName}?"))
                 {
+                    foreach (Schedule item in DBEntities.GetContext().Schedule.ToList())
+                    {
+                        if (item.ShipId == user.ShipId)
+                        {
+                            item.ShipId = null;
+                        }
+                    }
                     DBEntities.GetContext().Ship
                         .Remove(DgUser.SelectedItem as Ship);
                     DBEntities.GetContext().SaveChanges();

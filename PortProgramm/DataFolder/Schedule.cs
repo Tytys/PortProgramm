@@ -15,12 +15,12 @@ namespace PortProgramm.DataFolder
     public partial class Schedule
     {
         public int SheduleId { get; set; }
-        public int ShipId { get; set; }
+        public Nullable<int> ShipId { get; set; }
         public string DeparturePort { get; set; }
         public string ArrivalPort { get; set; }
         public System.DateTime DepartureTime { get; set; }
         public System.DateTime ArrivalTime { get; set; }
-        public int EmployeeId { get; set; }
+        public Nullable<int> EmployeeId { get; set; }
     
         public virtual Employee Employee { get; set; }
         public virtual Ship Ship { get; set; }

@@ -8,7 +8,7 @@
       xmlns:uc="clr-namespace:PortProgramm.UserControls"
       mc:Ignorable="d" 
       d:DesignHeight="600" d:DesignWidth="800"
-      Title="AddPage">
+      Title="Порт">
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

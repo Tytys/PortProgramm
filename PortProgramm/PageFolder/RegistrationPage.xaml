@@ -15,12 +15,7 @@
                 <Button Style="{StaticResource buttonCircle}" Click="Button_Click_1">
                     <Image Source="/ResourceFolder/ImageFolder/google.png" Width="20" Height="20" />
                 </Button>
-                <Button Style="{StaticResource buttonCircle}">
-                    <Image Source="/ResourceFolder/ImageFolder/facebook.png" Width="20" Height="20" />
-                </Button>
-                <Button Style="{StaticResource buttonCircle}">
-                    <Image Source="/ResourceFolder/ImageFolder/linkedin.png" Width="20" Height="20" />
-                </Button>
+                
             </StackPanel>
 
             <Border BorderBrush="#ACB0AF" BorderThickness="1" Margin="70 7" CornerRadius="5">

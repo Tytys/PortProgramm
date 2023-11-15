@@ -1,4 +1,4 @@
-﻿using Google.Apis.Auth.OAuth2;
+﻿
 using Newtonsoft.Json;
 using PortProgramm.ClassFolder;
 using PortProgramm.DataFolder;
@@ -85,17 +85,24 @@ namespace PortProgramm.PageFolder
 
         public void AddUser()
         {
-            
-            DBEntities.GetContext().User.Add(new User()
+            if (!DBEntities.GetContext().User.Any(x => x.UserName == txtEmail.Text))
             {
-                UserName = txtEmail.Text,
-                UserPassword = passwordBox.Password,
-                RoleId = 4
-            });      
-            
-            DBEntities.GetContext().SaveChanges();
+                MBClass.ErrorMB("Логин уже существует");
+            }
+            else
+            {
 
-            MBClass.ShowMesagePopup("Вы успешно зарегестрировались", App.Current.Windows[0]);
+                DBEntities.GetContext().User.Add(new User()
+                {
+                    UserName = txtEmail.Text,
+                    UserPassword = passwordBox.Password,
+                    RoleId = 4
+                });
+
+                DBEntities.GetContext().SaveChanges();
+
+                MBClass.ShowMesagePopup("Вы успешно зарегестрировались", App.Current.Windows[0]);
+            }
         }
 
 
