@@ -12,25 +12,31 @@ namespace PortProgramm.DataFolder
     using System;
     using System.Collections.Generic;
     
-    public partial class Ship
+    public partial class Adress
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Ship()
+        public Adress()
         {
-            this.Schedule = new HashSet<Schedule>();
+            this.Employee = new HashSet<Employee>();
+            this.User = new HashSet<User>();
         }
     
-        public int ShipId { get; set; }
-        public int ShipWeight { get; set; }
-        public string ShipName { get; set; }
-        public int ShipTypeId { get; set; }
-        public string ShipCountry { get; set; }
-        public byte[] ShipPhoto { get; set; }
-        public string ShipCompany { get; set; }
-        public int CrewCount { get; set; }
+        public int AdressId { get; set; }
+        public int CityId { get; set; }
+        public int StreetId { get; set; }
+        public int CountryId { get; set; }
+        public int House { get; set; }
+        public int Frame { get; set; }
+        public int Entrance { get; set; }
+        public int Flat { get; set; }
+        public int Apartment { get; set; }
     
+        public virtual City City { get; set; }
+        public virtual Country Country { get; set; }
+        public virtual Street Street { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Schedule> Schedule { get; set; }
-        public virtual ShipType ShipType { get; set; }
+        public virtual ICollection<Employee> Employee { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<User> User { get; set; }
     }
 }

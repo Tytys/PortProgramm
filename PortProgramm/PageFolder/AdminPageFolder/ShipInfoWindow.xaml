@@ -1,24 +1,22 @@
-﻿<Page x:Class="PortProgramm.PageFolder.AdminPageFolder.ShipEditPage"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:PortProgramm.PageFolder.AdminPageFolder"
-      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+﻿<Window x:Class="PortProgramm.PageFolder.AdminPageFolder.ShipInfoWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PortProgramm.PageFolder.AdminPageFolder"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:uc="clr-namespace:PortProgramm.UserControls"
       mc:Ignorable="d" 
-      d:DesignHeight="600" d:DesignWidth="800"
-      Title="Порт">
-    <Page.Resources>
+      d:DesignHeight="700" d:DesignWidth="800"
+      Title="Порт" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
-    </Page.Resources>
+    </Window.Resources>
 
-    <Grid>
-        <Grid VerticalAlignment="Center" Margin="0">
             <!--Background Layers-->
 
             <!--Main Layer-->
@@ -53,7 +51,7 @@
                             </Ellipse>
                         </Border>
 
-                        <TextBlock Text="Редактирование корабля" Foreground="#374655" FontSize="18" Margin="15 0 0 0" VerticalAlignment="Center"/>
+                        <TextBlock Text="Добавление корабля" Foreground="#374655" FontSize="18" Margin="15 0 0 0" VerticalAlignment="Center"/>
                     </StackPanel>
 
                     <!--Form Percentage-->
@@ -68,21 +66,17 @@
                               ItemsSource="{Binding ShipTypeId}" DisplayMemberPath="ShipTypeName"
                   SelectedValuePath="Id"
                   SelectedValue="{Binding Path=Id}"/>
-                    <Button Grid.Row="2" Content="Выберите фото корабля" Grid.Column="1" HorizontalAlignment="Center" Width="300" Style="{StaticResource mainButton2}" Click="Button_Click_1">
-                        <Button.Effect>
-                            <DropShadowEffect Direction="-120" BlurRadius="10" Opacity="0.3" ShadowDepth="5" Color="#4880FF"/>
-                        </Button.Effect>
-                    </Button>
                     <uc:MyTextBox Grid.Column="0" Grid.Row="4" Caption="Страна корабля" Hint="{Binding ShipCountry}" x:Name="CountryTb"/>
 
-                    <uc:MyTextBox Grid.Column="1" Grid.Row="3" Caption="Компания корабля" Hint="{Binding ShipCompany}" x:Name="CompanyTb"/>
-                    <uc:MyTextBox Grid.Column="1" Grid.Row="4" Caption="Экипаж корабля" Hint="{Binding CrewCount}" x:Name="CrewTb"/>
+                    <uc:MyTextBox Grid.Column="1" Grid.Row="2" Caption="Компания корабля" Hint="{Binding ShipCompany}" x:Name="CompanyTb"/>
+                    <uc:MyTextBox Grid.Column="1" Grid.Row="3" Caption="Экипаж корабля" Hint="{Binding CrewCount}" x:Name="CrewTb"/>
+                    <Image x:Name="ShipImg" Grid.Row="4" Grid.Column="1" Grid.RowSpan="2" Width="300"/>
 
-                    <!--Form Bottom Background-->
+            <!--Form Bottom Background-->
                     <Border Grid.Row="6" Grid.ColumnSpan="2" Height="80" Background="#f6f6f6" CornerRadius="0 0 10 10" Margin="-20 40 -20 0"/>
 
                     <!--Main Button-->
-                    <Button Grid.Row="6" Content="Сохранить" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="0,60,0,20" Style="{StaticResource mainButton2}" Click="Button_Click">
+                    <Button Grid.Row="6" Content="Назад" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="0,60,0,20" Style="{StaticResource mainButton2}" Click="Button_Click">
                         <Button.Effect>
                             <DropShadowEffect Direction="-120" BlurRadius="10" Opacity="0.3" ShadowDepth="5" Color="#4880FF"/>
                         </Button.Effect>
@@ -93,6 +87,4 @@
 
                 </Grid>
             </Border>
-        </Grid>
-    </Grid>
-</Page>
+</Window>

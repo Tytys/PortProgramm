@@ -18,74 +18,105 @@
     </Page.Resources>
 
 
-    <Grid>
-        <Grid VerticalAlignment="Center" Margin="0">
-            <!--Background Layers-->
 
-            <!--Main Layer-->
-            <Border CornerRadius="7" Background="#ffffff" >
-                <Border.Effect>
-                    <DropShadowEffect Direction="-130" BlurRadius="30" ShadowDepth="5" Opacity="0.1"/>
-                </Border.Effect>
+    <!--Background Layers-->
 
-                <Grid Margin="20 0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="auto"/>
-                    </Grid.RowDefinitions>
+    <!--Main Layer-->
+    <Border CornerRadius="7" Background="#ffffff" >
+        <Border.Effect>
+            <DropShadowEffect Direction="-130" BlurRadius="30" ShadowDepth="5" Opacity="0.1"/>
+        </Border.Effect>
 
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
+        <Grid Margin="20 0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
 
-                    <!--Form Title-->
-                    <StackPanel Orientation="Horizontal" Margin="20 20 0 0">
-                        <Border CornerRadius="50" BorderThickness="1.5" BorderBrush="#EFEFEF">
-                            <Ellipse Width="40" Height="40">
-                                <Ellipse.Fill>
-                                    <ImageBrush ImageSource="/ResourceFolder/ImageFolder/q4.png"/>
-                                </Ellipse.Fill>
-                            </Ellipse>
-                        </Border>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-                        <TextBlock Text="Добавление работника" Foreground="#374655" FontSize="18" Margin="15 0 0 0" VerticalAlignment="Center"/>
-                    </StackPanel>
+            <!--Form Title-->
+            <StackPanel Orientation="Horizontal" Margin="20 20 0 0">
+                <Border CornerRadius="50" BorderThickness="1.5" BorderBrush="#EFEFEF">
+                    <Ellipse Width="40" Height="40">
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="/ResourceFolder/ImageFolder/q4.png"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                </Border>
 
-                    <!--Form Percentage-->
+                <TextBlock Text="Добавление работника" Foreground="#374655" FontSize="18" Margin="15 0 0 0" VerticalAlignment="Center"/>
+            </StackPanel>
+
+            <!--Form Percentage-->
 
 
-                    <Separator Grid.Row="1" Grid.ColumnSpan="2" Height="0.7" Margin="-20 20 -20 20" Background="#E1E6EB"/>
+            <Separator Grid.Row="1" Grid.ColumnSpan="2" Height="0.7" Margin="-20 20 -20 20" Background="#E1E6EB"/>
 
-                    <!--Inputs-->
-                    <ComboBox Grid.Column="1" Grid.Row="3" Style="{StaticResource MaterialDesignOutlinedComboBox}" Margin="20 10 20 10" materialDesign:HintAssist.Hint="Выберите должность" x:Name="PostCb" 
+            <!--Inputs-->
+            <ComboBox Grid.Column="0" Grid.Row="5" Style="{StaticResource MaterialDesignOutlinedComboBox}" Margin="20 10 20 10" materialDesign:HintAssist.Hint="Выберите должность" x:Name="PostCb" 
                               ItemsSource="{Binding Post}" DisplayMemberPath="PostName"
                   SelectedValuePath="PostId"
                   SelectedValue="{Binding Path=PostId}"/>
-                    <uc:MyTextBox Grid.Column="0" Grid.Row="3" Caption="Телефон сотрудника" Hint="Введите телефон сотрудника" x:Name="PhoneTb"/>
-                    <uc:MyTextBox Grid.Column="0" Grid.Row="4" Caption="Паспорт сотрудника" Hint="Введите паспорт сотрудника" x:Name="PassportTb"/>
-                    <uc:MyTextBox Grid.Column="0" Grid.Row="2" Caption="ФИО сотрудника" Hint="Введите ФИО сотрудника" x:Name="FIOTb"/>
-                    <uc:MyTextBox Grid.Column="1" Grid.Row="2" Caption="Адрес сотрудника" Hint="Введите адрес сотрудника" x:Name="AdressTb"/>
-                    
-                    <!--Form Bottom Background-->
-                    <Border Grid.Row="6" Grid.ColumnSpan="2" Height="80" Background="#f6f6f6" CornerRadius="0 0 10 10" Margin="-20 40 -20 0"/>
+            <uc:MyTextBox Grid.Column="0" Grid.Row="3" Caption="Телефон сотрудника" Hint="Введите телефон сотрудника" x:Name="PhoneTb"/>
 
-                    <!--Main Button-->
-                    <Button Grid.Row="6" Content="Сохранить" HorizontalAlignment="Right" Margin="0,61,305,21" Style="{StaticResource mainButton}" Width="150" Grid.ColumnSpan="2" Click="Button_Click">
-                        <Button.Effect>
-                            <DropShadowEffect Direction="-120" BlurRadius="10" Opacity="0.3" ShadowDepth="5" Color="#4880FF"/>
-                        </Button.Effect>
-                    </Button>
+            <uc:MyTextBox Grid.Column="0" Grid.Row="2" Caption="ФИО сотрудника" Hint="Введите ФИО сотрудника" x:Name="FIOTb"/>
+            <Button Grid.Row="4" Content="Выбрать фото паспорта" Width="300" HorizontalAlignment="Center"  Style="{StaticResource mainButton2}" Click="Button_Click_1" Grid.Column="0">
+                <Button.Effect>
+                    <DropShadowEffect Direction="-120" BlurRadius="10" Opacity="0.3" ShadowDepth="5" Color="#4880FF"/>
+                </Button.Effect>
+            </Button>
+            <uc:MyTextBox Grid.Column="1" Grid.Row="2" Caption="Почта сотрудника" Hint="Введите почту сотрудника" x:Name="EmailTb"/>
+            <ComboBox Grid.Column="1" Grid.Row="3" Style="{StaticResource MaterialDesignOutlinedComboBox}" Margin="20 10 20 10" materialDesign:HintAssist.Hint="Выберите пол" x:Name="GenderCb" 
+                              ItemsSource="{Binding Gender}" DisplayMemberPath="GenderName"
+                  SelectedValuePath="GenderId"
+                  SelectedValue="{Binding Path=GenderId}"/>
+            <Button Grid.Row="4" Content="Выбрать фото" Width="300" HorizontalAlignment="Center"  Style="{StaticResource mainButton2}" Click="Button_Click_2" Grid.Column="1">
+                <Button.Effect>
+                    <DropShadowEffect Direction="-120" BlurRadius="10" Opacity="0.3" ShadowDepth="5" Color="#4880FF"/>
+                </Button.Effect>
+            </Button>
+            <ComboBox x:Name="AdressCb" 
+                        materialDesign:HintAssist.Hint="Адрес" 
+                              Grid.Column="1" Grid.Row="5"
+                              Margin="20 10 20 10"
+                        Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                        ItemsSource="{Binding Adress}"
+                        SelectedValuePath="AdressId"
+                        SelectedValue="{Binding Path=AdressId}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock>
+                                        <Run Text="{Binding City.CityName}"/>
+                                        <Run Text="," />
+                                        <Run Text="{Binding Street.StreetName}"/>
+                                        <Run Text="," />
+                                        <Run Text="{Binding House}"/>
+                        </TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
 
-                    <!--Secondary Button-->
+            <!--Form Bottom Background-->
+            <Border Grid.Row="7" Grid.ColumnSpan="2" Height="80" Background="#f6f6f6" CornerRadius="0 0 10 10" />
 
-                </Grid>
-            </Border>
+            <!--Main Button-->
+            <Button Grid.Row="7" Content="Сохранить" HorizontalAlignment="Left" Height="50" Style="{StaticResource mainButton}" Width="150" Grid.ColumnSpan="2" Click="Button_Click" Margin="305,17,0,16">
+                <Button.Effect>
+                    <DropShadowEffect Direction="-120" BlurRadius="10" Opacity="0.3" ShadowDepth="5" Color="#4880FF"/>
+                </Button.Effect>
+            </Button>
+
+            <!--Secondary Button-->
+
         </Grid>
-    </Grid>
+    </Border>
 </Page>

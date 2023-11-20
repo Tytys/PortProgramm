@@ -98,5 +98,10 @@ namespace PortProgramm.PageFolder.AdminPageFolder
         {
             NavigationService.Navigate(new PostAddPage());
         }
+
+        private void InfoMI_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

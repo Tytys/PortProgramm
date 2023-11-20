@@ -7,8 +7,8 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:uc="clr-namespace:PortProgramm.UserControls"
       mc:Ignorable="d" 
-      Height="800" Width="500"
-      MinHeight="800" MinWidth="500"
+      Height="800" Width="800"
+      MinHeight="800" MinWidth="800"
       Title="Порт">
     <Page.Resources>
         <ResourceDictionary>
@@ -44,6 +44,7 @@
 
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
                     <!--Form Title-->
@@ -75,12 +76,41 @@
                     </ComboBox>
                     <uc:MyTextBox Grid.Column="0" Grid.Row="4" Caption="ФИО пользователя" Hint="{Binding UserFIO}" x:Name="FIOTb"/>
                     <uc:MyTextBox Grid.Column="0" Grid.Row="5" Caption="Почта пользователя" Hint="{Binding UserEmail}" x:Name="EmailTb"/>
-
+                    <uc:MyTextBox Grid.Column="1" Grid.Row="2" Caption="Телефон пользователя" Hint="{Binding PhoneNumber}" x:Name="PhoneNumberTb"/>
+                    <ComboBox Grid.Column="1" Grid.Row="3" Style="{StaticResource MaterialDesignOutlinedComboBox}"  Margin="20 10 20 10" materialDesign:HintAssist.Hint="Пол" x:Name="GenderCb"                            
+                        ItemsSource="{Binding Gender}" DisplayMemberPath="GenderName"
+                        SelectedValuePath="GenderId"
+                        SelectedValue="{Binding Path=GenderId}" />
+                    <ComboBox x:Name="AdressCb" 
+                        materialDesign:HintAssist.Hint="Адрес" 
+                              Grid.Column="1" Grid.Row="4"
+                              Margin="20 10 20 10"
+                        Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                        ItemsSource="{Binding Adress}"
+                        SelectedValuePath="AdressId"
+                        SelectedValue="{Binding Path=AdressId}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock>
+                                        <Run Text="{Binding City.CityName}"/>
+                                        <Run Text="," />
+                                        <Run Text="{Binding Street.StreetName}"/>
+                                        <Run Text="," />
+                                        <Run Text="{Binding House}"/>
+                                </TextBlock>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <Button Grid.Row="5" Content="Выбрать фото паспорта" Width="300" HorizontalAlignment="Center"  Style="{StaticResource mainButton2}" Click="Button_Click_1" Grid.Column="2">
+                        <Button.Effect>
+                            <DropShadowEffect Direction="-120" BlurRadius="10" Opacity="0.3" ShadowDepth="5" Color="#4880FF"/>
+                        </Button.Effect>
+                    </Button>
                     <!--Form Bottom Background-->
-                    <Border Grid.Row="7" Height="80" Background="#f6f6f6" CornerRadius="0 0 10 10" Margin="-20,2,-20,1" />
+                    <Border Grid.Row="7" Height="80" Background="#f6f6f6" CornerRadius="0 0 10 10" Margin="-20,2,-20,1" Grid.ColumnSpan="2"/>
 
                     <!--Main Button-->
-                    <Button Grid.Row="7" Content="Сохранить" HorizontalAlignment="Center"  Style="{StaticResource mainButton2}" Click="Button_Click">
+                    <Button Grid.Row="7" Content="Сохранить" HorizontalAlignment="Center"  Style="{StaticResource mainButton2}" Click="Button_Click" Grid.ColumnSpan="2">
                         <Button.Effect>
                             <DropShadowEffect Direction="-120" BlurRadius="10" Opacity="0.3" ShadowDepth="5" Color="#4880FF"/>
                         </Button.Effect>

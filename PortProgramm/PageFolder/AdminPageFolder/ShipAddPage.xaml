@@ -7,7 +7,7 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:uc="clr-namespace:PortProgramm.UserControls"
       mc:Ignorable="d" 
-      d:DesignHeight="600" d:DesignWidth="500"
+      d:DesignHeight="600" d:DesignWidth="800"
       Title="Порт">
     <Page.Resources>
         <ResourceDictionary>
@@ -40,6 +40,7 @@
 
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
                     <!--Form Title-->
@@ -68,13 +69,19 @@
                   SelectedValuePath="Id"
                   SelectedValue="{Binding Path=Id}"/>
                     <uc:MyTextBox Grid.Column="0" Grid.Row="4" Caption="Страна корабля" Hint="Введите страну" x:Name="CountryTb"/>
-
+                    <Button Grid.Row="2" Content="Выберите фото корабля" Grid.Column="1" HorizontalAlignment="Center" Width="300" Style="{StaticResource mainButton2}" Click="Button_Click_1">
+                        <Button.Effect>
+                            <DropShadowEffect Direction="-120" BlurRadius="10" Opacity="0.3" ShadowDepth="5" Color="#4880FF"/>
+                        </Button.Effect>
+                    </Button>
+                    <uc:MyTextBox Grid.Column="1" Grid.Row="3" Caption="Компания корабля" Hint="Введите компанию" x:Name="CompanyTb"/>
+                    <uc:MyTextBox Grid.Column="1" Grid.Row="4" Caption="Экипаж корабля" Hint="Введите кол-во экипажа" x:Name="CrewTb"/>
 
                     <!--Form Bottom Background-->
                     <Border Grid.Row="6" Grid.ColumnSpan="2" Height="80" Background="#f6f6f6" CornerRadius="0 0 10 10" Margin="-20 40 -20 0"/>
 
                     <!--Main Button-->
-                    <Button Grid.Row="6" Content="Сохранить" HorizontalAlignment="Center" Margin="0,60,0,20" Style="{StaticResource mainButton2}" Click="Button_Click">
+                    <Button Grid.Row="6" Content="Сохранить" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="0,60,0,20" Style="{StaticResource mainButton2}" Click="Button_Click">
                         <Button.Effect>
                             <DropShadowEffect Direction="-120" BlurRadius="10" Opacity="0.3" ShadowDepth="5" Color="#4880FF"/>
                         </Button.Effect>

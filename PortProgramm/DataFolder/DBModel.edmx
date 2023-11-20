@@ -5,6 +5,34 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="Хранилище DBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Adress">
+          <Key>
+            <PropertyRef Name="AdressId" />
+          </Key>
+          <Property Name="AdressId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CityId" Type="int" Nullable="false" />
+          <Property Name="StreetId" Type="int" Nullable="false" />
+          <Property Name="CountryId" Type="int" Nullable="false" />
+          <Property Name="House" Type="int" Nullable="false" />
+          <Property Name="Frame" Type="int" Nullable="false" />
+          <Property Name="Entrance" Type="int" Nullable="false" />
+          <Property Name="Flat" Type="int" Nullable="false" />
+          <Property Name="Apartment" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="CityId" />
+          </Key>
+          <Property Name="CityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CityName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountryId" />
+          </Key>
+          <Property Name="CountryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountryName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="Employee">
           <Key>
             <PropertyRef Name="EmployeeId" />
@@ -12,9 +40,19 @@
           <Property Name="EmployeeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="EmployeeFIO" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Passport" Type="int" Nullable="false" />
+          <Property Name="PassportPhoto" Type="varbinary(max)" />
           <Property Name="PostId" Type="int" Nullable="false" />
-          <Property Name="Adress" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="GenderId" Type="int" Nullable="false" />
+          <Property Name="Photo" Type="varbinary(max)" />
+          <Property Name="AdressId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="GenderId" />
+          </Key>
+          <Property Name="GenderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GenderName" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Post">
           <Key>
@@ -51,6 +89,9 @@
           <Property Name="ShipName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ShipTypeId" Type="int" Nullable="false" />
           <Property Name="ShipCountry" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ShipPhoto" Type="varbinary(max)" />
+          <Property Name="ShipCompany" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CrewCount" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="ShipType">
           <Key>
@@ -58,6 +99,13 @@
           </Key>
           <Property Name="ShipTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ShipTypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Street">
+          <Key>
+            <PropertyRef Name="StreetId" />
+          </Key>
+          <Property Name="StreetId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StreetName" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -77,9 +125,73 @@
           <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="UserPassword" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="RoleId" Type="int" Nullable="false" />
-          <Property Name="UserFIO" Type="nvarchar(max)" />
-          <Property Name="UserEmail" Type="nvarchar" MaxLength="80" />
+          <Property Name="UserFIO" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="UserEmail" Type="nvarchar" MaxLength="80" Nullable="false" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="GenderId" Type="int" Nullable="false" />
+          <Property Name="AdressId" Type="int" Nullable="false" />
+          <Property Name="PassportPhoto" Type="varbinary(max)" />
         </EntityType>
+        <Association Name="FK_Adress_City">
+          <End Role="City" Type="Self.City" Multiplicity="1" />
+          <End Role="Adress" Type="Self.Adress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="Adress">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Adress_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="Adress" Type="Self.Adress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="Adress">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Adress_Street">
+          <End Role="Street" Type="Self.Street" Multiplicity="1" />
+          <End Role="Adress" Type="Self.Adress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Street">
+              <PropertyRef Name="StreetId" />
+            </Principal>
+            <Dependent Role="Adress">
+              <PropertyRef Name="StreetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Adress">
+          <End Role="Adress" Type="Self.Adress" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adress">
+              <PropertyRef Name="AdressId" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="AdressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="GenderId" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="GenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Employee_Post">
           <End Role="Post" Type="Self.Post" Multiplicity="1" />
           <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
@@ -128,6 +240,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_User_Adress">
+          <End Role="Adress" Type="Self.Adress" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adress">
+              <PropertyRef Name="AdressId" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="AdressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="GenderId" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="GenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_User_Role">
           <End Role="Role" Type="Self.Role" Multiplicity="1" />
           <End Role="User" Type="Self.User" Multiplicity="*" />
@@ -141,14 +277,39 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="Хранилище DBModelContainer">
+          <EntitySet Name="Adress" EntityType="Self.Adress" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Post" EntityType="Self.Post" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Schedule" EntityType="Self.Schedule" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ship" EntityType="Self.Ship" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ShipType" EntityType="Self.ShipType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Street" EntityType="Self.Street" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Adress_City" Association="Self.FK_Adress_City">
+            <End Role="City" EntitySet="City" />
+            <End Role="Adress" EntitySet="Adress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Adress_Country" Association="Self.FK_Adress_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Adress" EntitySet="Adress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Adress_Street" Association="Self.FK_Adress_Street">
+            <End Role="Street" EntitySet="Street" />
+            <End Role="Adress" EntitySet="Adress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Adress" Association="Self.FK_Employee_Adress">
+            <End Role="Adress" EntitySet="Adress" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Gender" Association="Self.FK_Employee_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
           <AssociationSet Name="FK_Employee_Post" Association="Self.FK_Employee_Post">
             <End Role="Post" EntitySet="Post" />
             <End Role="Employee" EntitySet="Employee" />
@@ -165,6 +326,14 @@
             <End Role="ShipType" EntitySet="ShipType" />
             <End Role="Ship" EntitySet="Ship" />
           </AssociationSet>
+          <AssociationSet Name="FK_User_Adress" Association="Self.FK_User_Adress">
+            <End Role="Adress" EntitySet="Adress" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Gender" Association="Self.FK_User_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
           <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
             <End Role="Role" EntitySet="Role" />
             <End Role="User" EntitySet="User" />
@@ -175,6 +344,41 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Adress">
+          <Key>
+            <PropertyRef Name="AdressId" />
+          </Key>
+          <Property Name="AdressId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CityId" Type="Int32" Nullable="false" />
+          <Property Name="StreetId" Type="Int32" Nullable="false" />
+          <Property Name="CountryId" Type="Int32" Nullable="false" />
+          <Property Name="House" Type="Int32" Nullable="false" />
+          <Property Name="Frame" Type="Int32" Nullable="false" />
+          <Property Name="Entrance" Type="Int32" Nullable="false" />
+          <Property Name="Flat" Type="Int32" Nullable="false" />
+          <Property Name="Apartment" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="City" Relationship="Self.FK_Adress_City" FromRole="Adress" ToRole="City" />
+          <NavigationProperty Name="Country" Relationship="Self.FK_Adress_Country" FromRole="Adress" ToRole="Country" />
+          <NavigationProperty Name="Street" Relationship="Self.FK_Adress_Street" FromRole="Adress" ToRole="Street" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_Employee_Adress" FromRole="Adress" ToRole="Employee" />
+          <NavigationProperty Name="User" Relationship="Self.FK_User_Adress" FromRole="Adress" ToRole="User" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="CityId" />
+          </Key>
+          <Property Name="CityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CityName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Adress" Relationship="Self.FK_Adress_City" FromRole="City" ToRole="Adress" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountryId" />
+          </Key>
+          <Property Name="CountryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Adress" Relationship="Self.FK_Adress_Country" FromRole="Country" ToRole="Adress" />
+        </EntityType>
         <EntityType Name="Employee">
           <Key>
             <PropertyRef Name="EmployeeId" />
@@ -182,11 +386,25 @@
           <Property Name="EmployeeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="EmployeeFIO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Passport" Type="Int32" Nullable="false" />
+          <Property Name="PassportPhoto" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="PostId" Type="Int32" Nullable="false" />
-          <Property Name="Adress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GenderId" Type="Int32" Nullable="false" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="AdressId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Adress" Relationship="Self.FK_Employee_Adress" FromRole="Employee" ToRole="Adress" />
+          <NavigationProperty Name="Gender" Relationship="Self.FK_Employee_Gender" FromRole="Employee" ToRole="Gender" />
           <NavigationProperty Name="Post" Relationship="Self.FK_Employee_Post" FromRole="Employee" ToRole="Post" />
           <NavigationProperty Name="Schedule" Relationship="Self.FK_Schedule_Employee" FromRole="Employee" ToRole="Schedule" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="GenderId" />
+          </Key>
+          <Property Name="GenderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GenderName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_Employee_Gender" FromRole="Gender" ToRole="Employee" />
+          <NavigationProperty Name="User" Relationship="Self.FK_User_Gender" FromRole="Gender" ToRole="User" />
         </EntityType>
         <EntityType Name="Post">
           <Key>
@@ -227,6 +445,9 @@
           <Property Name="ShipName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ShipTypeId" Type="Int32" Nullable="false" />
           <Property Name="ShipCountry" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ShipPhoto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ShipCompany" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CrewCount" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Schedule" Relationship="Self.FK_Schedule_Ship" FromRole="Ship" ToRole="Schedule" />
           <NavigationProperty Name="ShipType" Relationship="Self.FK_Ship_ShipType" FromRole="Ship" ToRole="ShipType" />
         </EntityType>
@@ -237,6 +458,14 @@
           <Property Name="ShipTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ShipTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Ship" Relationship="Self.FK_Ship_ShipType" FromRole="ShipType" ToRole="Ship" />
+        </EntityType>
+        <EntityType Name="Street">
+          <Key>
+            <PropertyRef Name="StreetId" />
+          </Key>
+          <Property Name="StreetId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StreetName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Adress" Relationship="Self.FK_Adress_Street" FromRole="Street" ToRole="Adress" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -256,10 +485,88 @@
           <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="UserPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="RoleId" Type="Int32" Nullable="false" />
-          <Property Name="UserFIO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="UserEmail" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="UserFIO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserEmail" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GenderId" Type="Int32" Nullable="false" />
+          <Property Name="AdressId" Type="Int32" Nullable="false" />
+          <Property Name="PassportPhoto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Adress" Relationship="Self.FK_User_Adress" FromRole="User" ToRole="Adress" />
+          <NavigationProperty Name="Gender" Relationship="Self.FK_User_Gender" FromRole="User" ToRole="Gender" />
           <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
         </EntityType>
+        <Association Name="FK_Adress_City">
+          <End Role="City" Type="Self.City" Multiplicity="1" />
+          <End Role="Adress" Type="Self.Adress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="Adress">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Adress_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="Adress" Type="Self.Adress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="Adress">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Adress_Street">
+          <End Role="Street" Type="Self.Street" Multiplicity="1" />
+          <End Role="Adress" Type="Self.Adress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Street">
+              <PropertyRef Name="StreetId" />
+            </Principal>
+            <Dependent Role="Adress">
+              <PropertyRef Name="StreetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Adress">
+          <End Role="Adress" Type="Self.Adress" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adress">
+              <PropertyRef Name="AdressId" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="AdressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Adress">
+          <End Role="Adress" Type="Self.Adress" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adress">
+              <PropertyRef Name="AdressId" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="AdressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="GenderId" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="GenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Employee_Post">
           <End Role="Post" Type="Self.Post" Multiplicity="1" />
           <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
@@ -281,6 +588,18 @@
             </Principal>
             <Dependent Role="Schedule">
               <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="GenderId" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="GenderId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -321,14 +640,43 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="DBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Adress" EntityType="Self.Adress" />
+          <EntitySet Name="City" EntityType="Self.City" />
+          <EntitySet Name="Country" EntityType="Self.Country" />
           <EntitySet Name="Employee" EntityType="Self.Employee" />
+          <EntitySet Name="Gender" EntityType="Self.Gender" />
           <EntitySet Name="Post" EntityType="Self.Post" />
           <EntitySet Name="Role" EntityType="Self.Role" />
           <EntitySet Name="Schedule" EntityType="Self.Schedule" />
           <EntitySet Name="Ship" EntityType="Self.Ship" />
           <EntitySet Name="ShipType" EntityType="Self.ShipType" />
+          <EntitySet Name="Street" EntityType="Self.Street" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="User" EntityType="Self.User" />
+          <AssociationSet Name="FK_Adress_City" Association="Self.FK_Adress_City">
+            <End Role="City" EntitySet="City" />
+            <End Role="Adress" EntitySet="Adress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Adress_Country" Association="Self.FK_Adress_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Adress" EntitySet="Adress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Adress_Street" Association="Self.FK_Adress_Street">
+            <End Role="Street" EntitySet="Street" />
+            <End Role="Adress" EntitySet="Adress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Adress" Association="Self.FK_Employee_Adress">
+            <End Role="Adress" EntitySet="Adress" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Adress" Association="Self.FK_User_Adress">
+            <End Role="Adress" EntitySet="Adress" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Gender" Association="Self.FK_Employee_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
           <AssociationSet Name="FK_Employee_Post" Association="Self.FK_Employee_Post">
             <End Role="Post" EntitySet="Post" />
             <End Role="Employee" EntitySet="Employee" />
@@ -336,6 +684,10 @@
           <AssociationSet Name="FK_Schedule_Employee" Association="Self.FK_Schedule_Employee">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="Schedule" EntitySet="Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Gender" Association="Self.FK_User_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="User" EntitySet="User" />
           </AssociationSet>
           <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
             <End Role="Role" EntitySet="Role" />
@@ -356,15 +708,57 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Хранилище DBModelContainer" CdmEntityContainer="DBEntities">
+          <EntitySetMapping Name="Adress">
+            <EntityTypeMapping TypeName="DBModel.Adress">
+              <MappingFragment StoreEntitySet="Adress">
+                <ScalarProperty Name="AdressId" ColumnName="AdressId" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="StreetId" ColumnName="StreetId" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="House" ColumnName="House" />
+                <ScalarProperty Name="Frame" ColumnName="Frame" />
+                <ScalarProperty Name="Entrance" ColumnName="Entrance" />
+                <ScalarProperty Name="Flat" ColumnName="Flat" />
+                <ScalarProperty Name="Apartment" ColumnName="Apartment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="City">
+            <EntityTypeMapping TypeName="DBModel.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Country">
+            <EntityTypeMapping TypeName="DBModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Employee">
             <EntityTypeMapping TypeName="DBModel.Employee">
               <MappingFragment StoreEntitySet="Employee">
                 <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
                 <ScalarProperty Name="EmployeeFIO" ColumnName="EmployeeFIO" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Passport" ColumnName="Passport" />
+                <ScalarProperty Name="PassportPhoto" ColumnName="PassportPhoto" />
                 <ScalarProperty Name="PostId" ColumnName="PostId" />
-                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="GenderId" ColumnName="GenderId" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="AdressId" ColumnName="AdressId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gender">
+            <EntityTypeMapping TypeName="DBModel.Gender">
+              <MappingFragment StoreEntitySet="Gender">
+                <ScalarProperty Name="GenderId" ColumnName="GenderId" />
+                <ScalarProperty Name="GenderName" ColumnName="GenderName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -405,6 +799,9 @@
                 <ScalarProperty Name="ShipName" ColumnName="ShipName" />
                 <ScalarProperty Name="ShipTypeId" ColumnName="ShipTypeId" />
                 <ScalarProperty Name="ShipCountry" ColumnName="ShipCountry" />
+                <ScalarProperty Name="ShipPhoto" ColumnName="ShipPhoto" />
+                <ScalarProperty Name="ShipCompany" ColumnName="ShipCompany" />
+                <ScalarProperty Name="CrewCount" ColumnName="CrewCount" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -413,6 +810,14 @@
               <MappingFragment StoreEntitySet="ShipType">
                 <ScalarProperty Name="ShipTypeId" ColumnName="ShipTypeId" />
                 <ScalarProperty Name="ShipTypeName" ColumnName="ShipTypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Street">
+            <EntityTypeMapping TypeName="DBModel.Street">
+              <MappingFragment StoreEntitySet="Street">
+                <ScalarProperty Name="StreetId" ColumnName="StreetId" />
+                <ScalarProperty Name="StreetName" ColumnName="StreetName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -436,6 +841,10 @@
                 <ScalarProperty Name="RoleId" ColumnName="RoleId" />
                 <ScalarProperty Name="UserFIO" ColumnName="UserFIO" />
                 <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="GenderId" ColumnName="GenderId" />
+                <ScalarProperty Name="AdressId" ColumnName="AdressId" />
+                <ScalarProperty Name="PassportPhoto" ColumnName="PassportPhoto" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

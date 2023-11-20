@@ -122,7 +122,17 @@ namespace PortProgramm.PageFolder.AdminPageFolder
             PasswordDG.Visibility= Visibility.Visible;
         }
 
-        
-        
+        private void InfoMI_Click(object sender, RoutedEventArgs e)
+        {
+            if (DgUser.SelectedItem == null)
+            {
+                MBClass.ErrorMB("Выберите " +
+                    "пользователя для получения информации");
+            }
+            else
+            {
+                new UserInfoWindow(DgUser.SelectedItem as User).ShowDialog();
+            }
+        }
     }
 }

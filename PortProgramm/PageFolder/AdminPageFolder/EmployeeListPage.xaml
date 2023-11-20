@@ -54,6 +54,8 @@
                               Click="AddPostMI_Click"/>
                     <MenuItem x:Name="EditMI" Header="Редактирование сотрудника"
                               Click="EditMI_Click"/>
+                    <MenuItem x:Name="InfoMI" Header="Информация о сотруднике"
+                              Click="InfoMI_Click"/>
                 </ContextMenu>
             </DataGrid.ContextMenu>
 
@@ -65,14 +67,8 @@
                 <DataGridTextColumn Header="Телефон"
                                     Binding="{Binding Phone}"
                                     Width="*"/>
-                <DataGridTextColumn Header="Паспорт"
-                                    Binding="{Binding Passport}"
-                                    Width="*"/>
                 <DataGridTextColumn Header="Должность"
                                     Binding="{Binding Post.PostName}"
-                                    Width="*"/>
-                <DataGridTextColumn Header="Адрес"
-                                    Binding="{Binding Adress}"
                                     Width="*"/>
             </DataGrid.Columns>
         </DataGrid>

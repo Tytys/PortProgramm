@@ -23,10 +23,15 @@ namespace PortProgramm.DataFolder
         public int EmployeeId { get; set; }
         public string EmployeeFIO { get; set; }
         public string Phone { get; set; }
-        public int Passport { get; set; }
+        public byte[] PassportPhoto { get; set; }
         public int PostId { get; set; }
-        public string Adress { get; set; }
+        public string Email { get; set; }
+        public int GenderId { get; set; }
+        public byte[] Photo { get; set; }
+        public int AdressId { get; set; }
     
+        public virtual Adress Adress { get; set; }
+        public virtual Gender Gender { get; set; }
         public virtual Post Post { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Schedule> Schedule { get; set; }

@@ -12,21 +12,18 @@ namespace PortProgramm.DataFolder
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class City
     {
-        public int UserId { get; set; }
-        public string UserName { get; set; }
-        public string UserPassword { get; set; }
-        public int RoleId { get; set; }
-        public string UserFIO { get; set; }
-        public string UserEmail { get; set; }
-        public string PhoneNumber { get; set; }
-        public int GenderId { get; set; }
-        public int AdressId { get; set; }
-        public byte[] PassportPhoto { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public City()
+        {
+            this.Adress = new HashSet<Adress>();
+        }
     
-        public virtual Adress Adress { get; set; }
-        public virtual Gender Gender { get; set; }
-        public virtual Role Role { get; set; }
+        public int CityId { get; set; }
+        public string CityName { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Adress> Adress { get; set; }
     }
 }

@@ -210,6 +210,15 @@
     <Compile Include="ClassFolder\GenerateCapchaClass.cs" />
     <Compile Include="ClassFolder\MBClass.cs" />
     <Compile Include="ClassFolder\VariableClass.cs" />
+    <Compile Include="DataFolder\Adress.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataFolder\City.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataFolder\Country.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataFolder\DBModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -228,6 +237,9 @@
     <Compile Include="DataFolder\Employee.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataFolder\Gender.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataFolder\Post.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -241,6 +253,9 @@
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DataFolder\ShipType.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataFolder\Street.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DataFolder\sysdiagrams.cs">
@@ -260,6 +275,9 @@
     </Compile>
     <Compile Include="PageFolder\AdminPageFolder\EmployeeEditPage.xaml.cs">
       <DependentUpon>EmployeeEditPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageFolder\AdminPageFolder\EmployeeInfoWindow.xaml.cs">
+      <DependentUpon>EmployeeInfoWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="PageFolder\AdminPageFolder\EmployeeListPage.xaml.cs">
       <DependentUpon>EmployeeListPage.xaml</DependentUpon>
@@ -288,8 +306,14 @@
     <Compile Include="PageFolder\AdminPageFolder\ShipEditPage.xaml.cs">
       <DependentUpon>ShipEditPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PageFolder\AdminPageFolder\ShipInfoWindow.xaml.cs">
+      <DependentUpon>ShipInfoWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PageFolder\AdminPageFolder\ShipListPage.xaml.cs">
       <DependentUpon>ShipListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageFolder\AdminPageFolder\UserInfoWindow.xaml.cs">
+      <DependentUpon>UserInfoWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="PageFolder\AuthorizationPage.xaml.cs">
       <DependentUpon>AuthorizationPage.xaml</DependentUpon>
@@ -382,6 +406,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="PageFolder\AdminPageFolder\EmployeeInfoWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PageFolder\AdminPageFolder\EmployeeListPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -418,7 +446,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="PageFolder\AdminPageFolder\ShipInfoWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PageFolder\AdminPageFolder\ShipListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageFolder\AdminPageFolder\UserInfoWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

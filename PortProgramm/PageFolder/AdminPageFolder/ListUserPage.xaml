@@ -54,6 +54,8 @@
                               Click="AddMI_Click"/>
                     <MenuItem x:Name="EditMI" Header="Редактирование пользователя"
                               Click="EditMI_Click"/>
+                    <MenuItem x:Name="InfoMI" Header="Информаация о пользователе"
+                              Click="InfoMI_Click"/>
                 </ContextMenu>
             </DataGrid.ContextMenu>
             

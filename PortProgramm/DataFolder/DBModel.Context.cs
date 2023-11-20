@@ -15,6 +15,10 @@ namespace PortProgramm.DataFolder
     
     public partial class DBEntities : DbContext
     {
+        public DBEntities()
+            : base("name=DBEntities")
+        {
+        }
         private static DBEntities context;
 
         public static DBEntities GetContext()
@@ -25,22 +29,23 @@ namespace PortProgramm.DataFolder
             }
             return context;
         }
-        public DBEntities()
-            : base("name=DBEntities")
-        {
-        }
-    
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Adress> Adress { get; set; }
+        public virtual DbSet<City> City { get; set; }
+        public virtual DbSet<Country> Country { get; set; }
         public virtual DbSet<Employee> Employee { get; set; }
+        public virtual DbSet<Gender> Gender { get; set; }
         public virtual DbSet<Post> Post { get; set; }
         public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<Schedule> Schedule { get; set; }
         public virtual DbSet<Ship> Ship { get; set; }
         public virtual DbSet<ShipType> ShipType { get; set; }
+        public virtual DbSet<Street> Street { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<User> User { get; set; }
     }
